@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
+import { SpinnerService } from './domains/shared/services/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'TQ_TaskManager_Front_Angular';
-
-  constructor(private toastr: ToastrService){}
-  showToaster(){
-    this.toastr.success("Mensaje enviado con éxito");
-  }
+  private  spinnerService= inject(SpinnerService);
+  showSpinner=this.spinnerService.showSpinner;
+  
 }
